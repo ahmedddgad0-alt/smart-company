@@ -1,0 +1,34 @@
+/* Smart Company virtual HQ lobby */
+.virtual-lobby{margin:34px 0 42px;padding:clamp(16px,3vw,28px);border:1px solid rgba(63,216,255,.23);border-radius:24px;background:radial-gradient(ellipse at 50% 0%,rgba(0,186,255,.13),transparent 48%),linear-gradient(145deg,rgba(7,16,35,.96),rgba(4,8,21,.98));box-shadow:inset 0 0 55px rgba(0,157,255,.045),0 18px 70px rgba(0,0,0,.22);overflow:hidden;position:relative}
+.virtual-lobby::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(95,218,255,.018) 6px),radial-gradient(ellipse at 50% 100%,rgba(0,210,255,.06),transparent 55%)}
+.virtual-lobby-heading{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.virtual-lobby-heading h2{margin:7px 0 5px;font-size:clamp(22px,3vw,30px);color:#effaff;text-shadow:0 0 22px rgba(0,210,255,.2)}
+.virtual-lobby-heading p{margin:0;color:#9db4d2;line-height:1.7;font-size:14px}
+.lobby-kicker{font-size:10px;font-weight:800;letter-spacing:.19em;color:#65eaff;direction:ltr;display:inline-block}
+.lobby-live{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border-radius:99px;border:1px solid rgba(45,225,190,.25);background:rgba(12,74,72,.22);color:#93ffe7;font-size:11px;white-space:nowrap}
+.lobby-live i{width:7px;height:7px;border-radius:50%;background:#48ffd1;box-shadow:0 0 12px #48ffd1;animation:lobbyPulse 1.7s infinite}
+.virtual-lobby-scene{height:clamp(270px,40vw,430px);position:relative;overflow:hidden;border:1px solid rgba(57,207,255,.22);border-radius:18px;background:radial-gradient(ellipse at 50% 45%,rgba(0,106,180,.22),transparent 50%),linear-gradient(180deg,#060e20,#030712);box-shadow:inset 0 0 45px rgba(0,180,255,.06)}
+#virtualLobbyCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none;touch-action:pan-y}
+.lobby-scene-hud{position:absolute;z-index:2;pointer-events:none;display:flex;gap:14px;align-items:center;color:rgba(135,232,255,.72);font-size:9px;letter-spacing:.13em;font-weight:800;direction:ltr}
+.lobby-hud-top{top:15px;left:16px;right:16px;justify-content:space-between}
+.lobby-scene-hint{position:absolute;z-index:2;pointer-events:none;bottom:13px;left:50%;transform:translateX(-50%);padding:7px 12px;max-width:calc(100% - 24px);white-space:nowrap;border:1px solid rgba(71,218,255,.2);border-radius:99px;background:rgba(2,12,28,.65);color:#a9eefe;font-size:11px;text-align:center}
+.lobby-shortcuts{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.lobby-shortcuts button{min-width:0;display:flex;align-items:center;gap:12px;text-align:right;padding:14px 13px;border:1px solid rgba(76,194,255,.2);border-radius:14px;background:linear-gradient(140deg,rgba(11,32,58,.82),rgba(7,15,32,.94));color:#eafaff;transition:transform .22s,border-color .22s,box-shadow .22s;}
+.lobby-shortcuts button:hover,.lobby-shortcuts button:focus-visible{transform:translateY(-3px);border-color:rgba(77,232,255,.68);box-shadow:0 0 24px rgba(0,183,255,.12);outline:none}
+.shortcut-icon{flex:0 0 39px;height:39px;display:grid;place-items:center;border-radius:12px;background:rgba(0,190,255,.12);border:1px solid rgba(78,224,255,.25);color:#76edff;font-size:22px}
+.lobby-shortcuts button:nth-child(2) .shortcut-icon{background:rgba(140,91,255,.13);border-color:rgba(168,131,255,.3);color:#c9aaff}
+.lobby-shortcuts button:nth-child(3) .shortcut-icon{background:rgba(39,255,190,.08);border-color:rgba(65,255,198,.24);color:#7dffdc}
+.lobby-shortcuts button>span:nth-child(2){display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.lobby-shortcuts strong{font-size:13px}
+.lobby-shortcuts small{color:#8da6c6;font-size:10px;line-height:1.5}
+.lobby-shortcuts button>b{color:#68dfff;font-size:16px}
+.lobby-fallback{position:absolute;inset:0;z-index:1;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:24px;text-align:center;background:radial-gradient(ellipse,rgba(0,194,255,.12),transparent 65%);color:#e7faff}
+.lobby-fallback:not(.hidden){display:flex}
+.lobby-fallback span{max-width:360px;color:#9db4d2;font-size:12px;line-height:1.7}
+.fallback-orb{display:grid;place-items:center;width:70px;height:70px;border-radius:50%;border:1px solid rgba(91,232,255,.5);color:#75efff;font-size:32px;box-shadow:0 0 35px rgba(0,197,255,.2),inset 0 0 22px rgba(0,197,255,.12)}
+@keyframes lobbyPulse{50%{opacity:.45;box-shadow:0 0 3px #48ffd1}}
+@media(max-width:700px){.lobby-shortcuts{grid-template-columns:1fr}.lobby-shortcuts button{padding:12px}.virtual-lobby{margin:26px 0 32px}.lobby-scene-hint{font-size:10px}.lobby-hud-top{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.lobby-live i{animation:none}.lobby-shortcuts button{transition:none}}
+.lobby-arrival{animation:lobbyArrival 1.2s ease-out}
+@keyframes lobbyArrival{0%{filter:drop-shadow(0 0 0 rgba(0,220,255,0));}35%{filter:drop-shadow(0 0 20px rgba(0,220,255,.28));}100%{filter:drop-shadow(0 0 0 rgba(0,220,255,0));}}
+@media(prefers-reduced-motion:reduce){.lobby-arrival{animation:none}}

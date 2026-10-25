@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Company | إدارة الشركات الذكية</title>
+
+    <meta name="theme-color" content="#0b1020">
+    <meta name="description" content="منصة ذكية لإنشاء الشركات وإدارة الفرق والموظفين والمشروعات.">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+    .google-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+        color: #8491aa;
+    }
+
+    .google-divider::before,
+    .google-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #26334d;
+    }
+
+    .google-signin-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        padding: 13px;
+        background: #fff;
+        color: #202124;
+        border: 1px solid #dadce0;
+        border-radius: 9px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .google-signin-button:hover {
+        background: #f2f5f9;
+    }
+
+    .google-signin-button:disabled {
+        opacity: 0.6;
+        cursor: wait;
+    }
+</style>
+
+    <link rel="stylesheet" href="./hologram.css">
+</head>
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="navbar">
+        <a class="brand" href="#">
+            <div class="brand-icon">S</div>
+            <div>
+                <h1>Smart<span>Company</span></h1>
+                <p>إدارة أذكى. مستقبل أفضل.</p>
+            </div>
+        </a>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            منصة إدارة الشركات
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <section class="hero">
+            <div class="hero-badge">
+                <span>✦</span>
+                مساحة عملك الجديدة تبدأ هنا
+            </div>
+
+            <h2>
+                شركتك بالكامل،
+                <span>في مكان واحد.</span>
+            </h2>
+
+            <p class="hero-description">
+                أنشئ شركتك، نظّم فريقك، أدر صلاحيات موظفيك،
+                واجمع مشروعاتك وملفاتك ومحادثاتك في مساحة عمل متكاملة.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🏢</div>
+                    <div>
+                        <h3>إدارة متكاملة</h3>
+                        <p>الأقسام والموظفون</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🔐</div>
+                    <div>
+                        <h3>صلاحيات منظمة</h3>
+                        <p>لكل شخص دوره</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📁</div>
+                    <div>
+                        <h3>مساحات عمل</h3>
+                        <p>ملفات ومشروعات الفرق</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="auth-card">
+
+            <div class="card-heading">
+                <div class="card-logo">SC</div>
+                <h2 id="formTitle">أهلًا بعودتك</h2>
+                <p id="formSubtitle">سجّل الدخول للوصول إلى مساحة عملك.</p>
+            </div>
+
+            <div id="authMessage" class="message hidden" role="status"></div>
+
+            <form id="authForm">
+
+                <div id="nameGroup" class="form-group hidden">
+                    <label for="fullName">الاسم الكامل</label>
+                    <input
+                        id="fullName"
+                        type="text"
+                        placeholder="اكتب اسمك"
+                        autocomplete="name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="name@example.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+
+<div class="form-group">
+    <label for="password">كلمة المرور</label>
+
+    <div class="password-wrapper">
+        <input
+            id="password"
+            type="password"
+            placeholder="أدخل كلمة المرور"
+            autocomplete="current-password"
+            minlength="8"
+            required
+        >
+
+        <button
+            type="button"
+            class="toggle-password"
+            onclick="togglePasswordVisibility('password', this)"
+            aria-label="إظهار كلمة المرور"
+            title="إظهار كلمة المرور"
+        >👁️</button>
+    </div>
+</div>
+
+
+
+                <div id="confirmPasswordGroup" class="form-group hidden">
+                    <label for="confirmPassword">تأكيد كلمة المرور</label>
+                    <input
+                        id="confirmPassword"
+                        type="password"
+                        placeholder="أعد كتابة كلمة المرور"
+                        autocomplete="new-password"
+                        minlength="8"
+                    >
+                </div>
+
+                <button id="submitButton" type="submit">
+                    <span id="submitText">تسجيل الدخول</span>
+                    <span class="button-arrow">←</span>
+                </button>
+
+            </form>
+
+           
+<div class="google-divider">
+    <span>أو</span>
+</div>
+
+<button id="googleSignInButton" class="google-signin-button" type="button">
+    <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 3.08 13.22l7.98 6.19C12.95 13.72 18.02 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.73 7.18l7.65 5.93c4.47-4.13 7.12-10.2 7.12-17.58z"/>
+        <path fill="#FBBC05" d="M11.06 28.59A14.4 14.4 0 0 1 10.3 24c0-1.59.27-3.13.76-4.59l-7.98-6.19A23.9 23.9 0 0 0 0 24c0 3.87.93 7.52 2.32 10.78l7.98-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.87l-7.65-5.93c-2.12 1.42-4.84 2.26-8.25 2.26-5.98 0-11.05-4.22-12.94-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+    </svg>
+
+    <span>تسجيل الدخول باستخدام Google</span>
+</button>
+
+
+
+            <div class="form-switch">
+                <span id="switchText">ليس لديك حساب؟</span>
+                <button id="switchMode" type="button">إنشاء حساب</button>
+            </div>
+
+            <div class="security-note">
+                <span>🔒</span>
+                حسابك محمي بتسجيل الدخول الآمن
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Smart Company. جميع الحقوق محفوظة.</p>
+        <span>إدارة الشركات بطريقة مختلفة.</span>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+<script src="./language.js"></script>
+    <script src="./hologram.js" defer></script>
+</body>
+</html>
+

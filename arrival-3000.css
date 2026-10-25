@@ -1,0 +1,60 @@
+
+/* YEAR 3000 arrival sequence — presentation layer only */
+body.scifi-arrival-active { overflow:hidden; }
+.scifi-arrival {
+  position:fixed; inset:0; z-index:99999; display:grid; place-items:center; overflow:hidden;
+  color:#eafaff; direction:rtl; background:
+    radial-gradient(ellipse at 50% 54%,rgba(0,213,255,.16),transparent 32%),
+    radial-gradient(ellipse at 50% 100%,rgba(87,44,255,.19),transparent 55%),
+    #020611;
+  opacity:1; visibility:visible; transition:opacity .9s ease, visibility .9s ease;
+  font-family:inherit;
+}
+.scifi-arrival.is-leaving {opacity:0; visibility:hidden; pointer-events:none;}
+.scifi-arrival::before {content:""; position:absolute; inset:-40%; opacity:.42;
+  background-image:linear-gradient(rgba(32,196,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(32,196,255,.14) 1px,transparent 1px);
+  background-size:56px 56px; transform:perspective(550px) rotateX(63deg) translateY(24%);
+  transform-origin:center bottom; animation:scifi-floor-drift 7s linear infinite;}
+.scifi-arrival::after {content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(96,222,255,.045) 4px),radial-gradient(ellipse,transparent 35%,rgba(0,0,0,.58) 100%);}
+.scifi-arrival-stars {position:absolute;inset:0; overflow:hidden; pointer-events:none;}
+.scifi-arrival-star {position:absolute;width:2px;height:2px;border-radius:50%;background:#aaf6ff;box-shadow:0 0 10px #26dfff;animation:scifi-star-float var(--dur,7s) linear infinite;opacity:0;}
+.scifi-arrival-core {position:relative;z-index:2;width:min(780px,92vw);text-align:center;padding:28px 18px;}
+.scifi-arrival-brand {font-size:11px;letter-spacing:.32em;color:#73eaff;text-transform:uppercase;margin-bottom:24px;direction:ltr;text-shadow:0 0 18px #00bfff;}
+.scifi-arrival-portal {width:clamp(160px,26vw,250px);aspect-ratio:1;margin:0 auto 28px;position:relative;display:grid;place-items:center;filter:drop-shadow(0 0 30px rgba(0,214,255,.28));}
+.scifi-arrival-portal .ring {position:absolute;border-radius:50%;border:1px solid rgba(95,234,255,.72);box-shadow:0 0 18px rgba(0,207,255,.25),inset 0 0 18px rgba(0,207,255,.12);}
+.scifi-arrival-portal .ring:nth-child(1){inset:2%;border-style:dashed;animation:scifi-spin 18s linear infinite;}
+.scifi-arrival-portal .ring:nth-child(2){inset:11%;border-width:2px;border-color:rgba(135,94,255,.85);animation:scifi-spin 11s linear infinite reverse;}
+.scifi-arrival-portal .ring:nth-child(3){inset:20%;border-style:dotted;animation:scifi-spin 24s linear infinite;}
+.scifi-arrival-portal .portal-core {width:45%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#e8ffff 0%,#00dfff 8%,rgba(0,140,255,.36) 32%,rgba(108,45,255,.12) 63%,transparent 72%);box-shadow:0 0 35px #00cfff,0 0 90px rgba(0,125,255,.35);animation:scifi-core-pulse 2.4s ease-in-out infinite;}
+.scifi-arrival h2 {font-size:clamp(28px,5.4vw,58px);line-height:1.1;margin:0 0 14px;font-weight:850;letter-spacing:-.035em;text-shadow:0 0 24px rgba(0,213,255,.35);}
+.scifi-arrival h2 span {color:#66eaff;}
+.scifi-arrival p {margin:0 auto;color:#9db9d5;font-size:clamp(13px,2vw,16px);line-height:1.9;max-width:580px;}
+.scifi-arrival-status {display:flex;justify-content:center;gap:10px;align-items:center;margin:25px auto 0;color:#8df5ff;font-size:11px;letter-spacing:.08em;}
+.scifi-arrival-status i {width:7px;height:7px;border-radius:50%;background:#42f5d4;box-shadow:0 0 13px #42f5d4;animation:scifi-status-pulse 1.2s infinite;}
+.scifi-arrival-progress {width:min(280px,65vw);height:2px;margin:18px auto 0;background:rgba(121,214,255,.16);overflow:hidden;}
+.scifi-arrival-progress span {display:block;width:35%;height:100%;background:#64f0ff;box-shadow:0 0 14px #00dfff;animation:scifi-progress 3.8s ease-in-out forwards;}
+.scifi-arrival-skip {position:absolute;z-index:3;bottom:22px;right:50%;transform:translateX(50%);border:1px solid rgba(101,226,255,.28);background:rgba(5,20,39,.55);color:#a9eaff;padding:9px 16px;border-radius:999px;font:inherit;font-size:12px;cursor:pointer;backdrop-filter:blur(12px);}
+.scifi-arrival-skip:hover {border-color:#58e9ff;background:rgba(0,136,190,.22);}
+body.scifi-arrival-done .layout {animation:scifi-reveal .9s ease both;}
+/* The company UI remains fully interactive beneath its futuristic skin. */
+body:has(.layout) {background-color:#030815;}
+.layout {background:radial-gradient(ellipse at 78% 0%,rgba(0,183,255,.075),transparent 32%),radial-gradient(ellipse at 4% 90%,rgba(108,57,255,.07),transparent 28%),#050a16;}
+.sidebar {background:linear-gradient(180deg,rgba(7,18,38,.97),rgba(4,10,24,.98))!important;border-inline-end:1px solid rgba(72,211,255,.2)!important;box-shadow:12px 0 45px rgba(0,0,0,.2),inset -1px 0 rgba(94,220,255,.05);}
+.brand {text-shadow:0 0 18px rgba(0,207,255,.28);}
+.nav-button {transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease!important;border:1px solid transparent!important;}
+.nav-button:hover,.nav-button.active {border-color:rgba(60,221,255,.22)!important;box-shadow:inset 0 0 24px rgba(0,190,255,.055),0 0 20px rgba(0,160,255,.05);transform:translateX(-2px);}
+.topbar {backdrop-filter:blur(20px);background:rgba(5,13,29,.78)!important;border-bottom:1px solid rgba(70,207,255,.15)!important;}
+#content {animation:scifi-content-in .7s ease both;}
+#content .card,#content .panel,#content .section-card {border-color:rgba(91,210,255,.17)!important;box-shadow:0 14px 45px rgba(0,0,0,.15),inset 0 1px rgba(255,255,255,.025);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;}
+#content .card:hover,#content .panel:hover,#content .section-card:hover {border-color:rgba(91,230,255,.34)!important;box-shadow:0 15px 48px rgba(0,160,255,.07),inset 0 1px rgba(255,255,255,.04);}
+@keyframes scifi-floor-drift {from{background-position:0 0,0 0}to{background-position:0 56px,56px 0}}
+@keyframes scifi-spin {to{transform:rotate(360deg)}}
+@keyframes scifi-core-pulse {0%,100%{transform:scale(.92);opacity:.78}50%{transform:scale(1.08);opacity:1}}
+@keyframes scifi-star-float {0%{transform:translate3d(0,25px,0) scale(.5);opacity:0}15%{opacity:.85}85%{opacity:.65}100%{transform:translate3d(var(--drift,35px),-110vh,0) scale(1.4);opacity:0}}
+@keyframes scifi-progress {0%{transform:translateX(340%)}100%{transform:translateX(-360%)}}
+@keyframes scifi-status-pulse {50%{opacity:.35;box-shadow:0 0 3px #42f5d4}}
+@keyframes scifi-content-in {from{opacity:.65;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scifi-reveal {from{filter:brightness(1.7) saturate(1.3)}to{filter:brightness(1) saturate(1)}}
+@media(max-width:650px){.scifi-arrival-core{padding:12px}.scifi-arrival-portal{margin-bottom:22px}.scifi-arrival-status{font-size:9px}.scifi-arrival::before{background-size:40px 40px}.sidebar{box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.scifi-arrival *, .scifi-arrival::before,.scifi-arrival::after{animation:none!important;transition:none!important}.scifi-arrival-progress span{width:100%}}

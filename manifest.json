@@ -1,0 +1,12 @@
+{
+  "name": "Smart Company — Year 3000",
+  "short_name": "Smart Company",
+  "description": "إدارة الشركات الذكية بتجربة مستقبلية ثلاثية الأبعاد وهولوجرامية.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#071329",
+  "orientation": "any",
+  "icons": []
+}

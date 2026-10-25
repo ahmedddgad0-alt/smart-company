@@ -1,0 +1,140 @@
+join-company.html<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الانضمام إلى شركة | Smart Company</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0b1120;
+            color: #f1f5f9;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+            padding: 30px;
+            background: #111827;
+            border: 1px solid #263244;
+            border-radius: 18px;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #60a5fa;
+        }
+
+        p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 9px;
+            border: 1px solid #334155;
+            background: #0b1120;
+            color: white;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 18px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin-top: 18px;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            color: #fca5a5;
+        }
+
+        .success {
+            color: #86efac;
+        }
+
+        .back {
+            background: #1e293b;
+            border: 1px solid #334155;
+        }
+    </style>
+    <link rel="stylesheet" href="./hologram.css">
+</head>
+
+<body>
+    <main class="card">
+        <h1>الانضمام إلى شركة</h1>
+
+        <p>
+            أدخل كود الدعوة الذي حصلت عليه من مدير الشركة.
+            يجب تسجيل الدخول بالحساب المرتبط بالبريد المدعو.
+        </p>
+
+        <form id="joinForm">
+            <label for="invitationCode">كود الدعوة</label>
+
+         <input
+    id="invitationCode"
+    type="text"
+  maxlength="20"
+    minlength="12"
+    pattern="[A-Za-z0-9]{12}"
+    placeholder="مثال: D0FD7511A9E6"
+    autocomplete="off"
+    autocapitalize="characters"
+    spellcheck="false"
+    required
+>
+
+            <button id="joinButton" type="submit">
+                قبول الدعوة والانضمام
+            </button>
+        </form>
+
+        <p id="message" class="message" role="status"></p>
+
+        <button id="backButton" class="back" type="button">
+            العودة إلى شركاتي
+        </button>
+    </main>
+
+  
+    <script type="module" src="./join-company.js"></script>
+<script src="./language.js"></script>
+    <script src="./hologram.js" defer></script>
+</body>
+</html>

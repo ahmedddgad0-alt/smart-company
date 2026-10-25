@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>لوحة التحكم | Smart Company</title>
+
+    <meta name="theme-color" content="#0b1020">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #080c18;
+            color: #f4f7ff;
+        }
+
+        button, input, textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .navbar {
+            min-height: 76px;
+            padding: 16px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            background: #0b1020;
+            border-bottom: 1px solid #202b42;
+        }
+
+        .brand {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .brand span {
+            color: #5794ff;
+        }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .user-email {
+            color: #aab7d0;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .logout-button {
+            padding: 10px 15px;
+            color: #f4f7ff;
+            background: #172137;
+            border: 1px solid #34425e;
+            border-radius: 9px;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 40px auto;
+        }
+
+        .welcome {
+            margin-bottom: 30px;
+        }
+
+        .welcome h1 {
+            margin-bottom: 10px;
+            font-size: clamp(25px, 4vw, 36px);
+        }
+
+        .welcome p {
+            color: #aab7d0;
+            line-height: 1.8;
+        }
+
+        .section-title {
+            margin: 30px 0 18px;
+            font-size: 22px;
+        }
+
+        .panel {
+            padding: 25px;
+            background: #10182a;
+            border: 1px solid #26334d;
+            border-radius: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 14px;
+            color: #dce5f8;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 13px;
+            color: #f4f7ff;
+            background: #080f1e;
+            border: 1px solid #303d57;
+            border-radius: 9px;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #5794ff;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .primary-button {
+            padding: 13px 20px;
+    color: #dce8ff;
+    background: #172137;
+    border: 1px solid #34425e;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: 0.2s;
+        }
+
+        .primary-button:hover {
+            background: #223352;
+    border-color: #5794ff;
+        }
+
+        .secondary-button {
+    padding: 13px 20px;
+    color: #dce8ff;
+    background: #172137;
+    border: 1px solid #34425e;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.secondary-button:hover {
+    background: #223352;
+    border-color: #5794ff;
+}
+
+        .primary-button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .message {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 9px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .message:empty {
+            display: none;
+        }
+
+        .message.error {
+            color: #ffc6c6;
+            background: #351820;
+        }
+
+        .message.success {
+            color: #b8ffdb;
+            background: #103327;
+        }
+
+        .company-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .company-card {
+            padding: 22px;
+            background: #10182a;
+            border: 1px solid #26334d;
+            border-radius: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .company-card h3 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .company-card p {
+            color: #aab7d0;
+            line-height: 1.8;
+        }
+
+        .role-badge {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 7px 11px;
+            color: #bcd5ff;
+            background: #172c50;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .empty-state {
+            color: #aab7d0;
+            line-height: 1.8;
+        }
+
+        .loading {
+            color: #aab7d0;
+        }
+
+        footer {
+            padding: 30px 15px;
+            color: #7f8ca6;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 650px) {
+            .form-grid,
+            .company-list {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+
+            .container {
+                margin-top: 25px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./hologram.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="brand">
+            Smart<span>Company</span>
+        </div>
+
+        <div class="user-area">
+            <span id="userEmail" class="user-email">جارٍ تحميل الحساب...</span>
+            <button id="logoutButton" class="logout-button" type="button">
+                تسجيل الخروج
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome">
+            <h1 id="welcomeTitle">أهلًا بك في Smart Company 👋</h1>
+
+            <p>
+                أنشئ شركتك، وابدأ في تنظيم فريقك وإدارة أعمالك
+                من مساحة عمل واحدة.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-title">🏢 إنشاء شركة جديدة</h2>
+
+            <div class="panel">
+                <form id="companyForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="companyName">اسم الشركة *</label>
+                            <input
+                                id="companyName"
+                                type="text"
+                                minlength="2"
+                                maxlength="80"
+                                placeholder="مثال: شركة المستقبل"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="companyActivity">نشاط الشركة *</label>
+                            <input
+                                id="companyActivity"
+                                type="text"
+                                maxlength="100"
+                                placeholder="مثال: تطوير البرمجيات"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="companyDescription">وصف الشركة</label>
+                            <textarea
+                                id="companyDescription"
+                                maxlength="1000"
+                                placeholder="اكتب نبذة مختصرة عن شركتك..."
+                            ></textarea>
+                        </div>
+
+<div class="full-width">
+    <div style="
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    ">
+        <button
+            id="createCompanyButton"
+            class="primary-button"
+            type="submit"
+        >
+            + إنشاء الشركة
+        </button>
+
+        <button
+            id="joinCompanyButton"
+            class="secondary-button"
+            type="button"
+        >
+            🤝 الانضمام إلى شركة
+        </button>
+    </div>
+</div>
+                    </div>
+
+                </form>
+
+                <div
+                    id="companyMessage"
+                    class="message"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">🏬 شركاتي</h2>
+
+            <div id="companyList" class="company-list">
+                <p class="loading">جارٍ تحميل الشركات...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 Smart Company — إدارة الشركات بطريقة مختلفة.
+    </footer>
+
+    <script type="module" src="./dashboard.js"></script>
+
+    <script>
+    document
+        .getElementById("joinCompanyButton")
+        .addEventListener("click", () => {
+            window.location.href = "./join-company.html";
+        });
+</script>
+<script src="./language.js"></script>
+    <script src="./hologram.js" defer></script>
+</body>
+</html>

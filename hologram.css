@@ -1,0 +1,145 @@
+/* SMART COMPANY // FUTURE INTERFACE — additive sci-fi visual system */
+:root {
+  color-scheme: dark;
+  --holo-cyan: #5ff4ff;
+  --holo-blue: #4b8dff;
+  --holo-violet: #a56dff;
+  --holo-mint: #74ffd5;
+  --holo-line: rgba(95, 244, 255, .24);
+  --holo-glass: rgba(5, 15, 34, .78);
+  --holo-text: #e8f7ff;
+  --holo-muted: #91a9c7;
+}
+html { scroll-behavior: smooth; background: #030712; }
+body {
+  isolation: isolate;
+  color: var(--holo-text);
+  background-color: #030712 !important;
+  background-image:
+    radial-gradient(ellipse at 12% 10%, rgba(0, 193, 255, .15), transparent 34%),
+    radial-gradient(ellipse at 88% 22%, rgba(101, 63, 255, .15), transparent 32%),
+    radial-gradient(ellipse at 50% 100%, rgba(0, 104, 160, .13), transparent 44%),
+    linear-gradient(145deg, #030712 0%, #071329 48%, #040817 100%) !important;
+  min-height: 100vh;
+}
+/* animated technical grid + soft atmospheric glow */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background-image: linear-gradient(rgba(71, 204, 255, .065) 1px, transparent 1px), linear-gradient(90deg, rgba(71, 204, 255, .065) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, #000 10%, transparent 85%);
+  animation: holo-grid-drift 34s linear infinite;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 9; pointer-events: none; opacity: .15;
+  background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(100,220,255,.10) 4px, transparent 5px);
+  mix-blend-mode: screen;
+}
+#holo-stars { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: .72; }
+body > * { position: relative; }
+::selection { background: rgba(75, 220, 255, .36); color: #fff; }
+:focus-visible { outline: 2px solid var(--holo-cyan) !important; outline-offset: 3px; }
+/* Glass panels are intentionally translucent, like projected interface surfaces. */
+.auth-card, .panel, .company-card, .card, .welcome, .module-card, .project-form,
+.project-card, .project-stats, .office-interior, .settings-card, .profile-panel,
+.department-feature-card, .department-tasks-panel, .office-room-chat-card,
+.office-locker-storage, .office-locker-file-card, .container, .company-list {
+  color: var(--holo-text);
+  background: linear-gradient(145deg, rgba(12, 30, 57, .84), rgba(5, 14, 31, .78)) !important;
+  border: 1px solid rgba(95, 224, 255, .22) !important;
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  box-shadow: 0 18px 48px rgba(0,0,0,.28), 0 0 26px rgba(0,156,255,.045), inset 0 1px 0 rgba(220,250,255,.08);
+  transition: border-color .28s ease, box-shadow .28s ease, background-color .28s ease, transform .28s ease;
+  position: relative;
+  overflow: hidden;
+}
+.auth-card::before, .panel::before, .company-card::before, .card::before, .welcome::before,
+.module-card::before, .project-card::before, .settings-card::before, .department-feature-card::before {
+  content: ""; position: absolute; top: 0; left: 12%; right: 12%; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(95,244,255,.85), rgba(165,109,255,.65), transparent);
+  opacity: .68;
+}
+.auth-card:hover, .panel:hover, .company-card:hover, .card:hover, .module-card:hover,
+.project-card:hover, .settings-card:hover, .department-feature-card:hover,
+.office-room-chat-card:hover, .office-locker-file-card:hover {
+  border-color: rgba(95, 244, 255, .58) !important;
+  box-shadow: 0 20px 54px rgba(0,0,0,.32), 0 0 30px rgba(0,190,255,.13), inset 0 1px 0 rgba(255,255,255,.1);
+}
+.navbar, .topbar, .sidebar, .office-interior-header {
+  color: var(--holo-text) !important;
+  background: rgba(4, 13, 29, .86) !important;
+  border-color: rgba(95, 224, 255, .22) !important;
+  backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 8px 34px rgba(0,0,0,.18), inset 0 -1px 0 rgba(95,244,255,.05);
+}
+.brand, .brand h1, .brand h2, .hero h1, .section-title, .card-heading, .welcome h1, .welcome h2,
+h1, h2, h3, h4 { color: #f0fbff; }
+.hero h1, .welcome h1 { text-shadow: 0 0 24px rgba(65,210,255,.18); }
+.hero-description, .security-note, .user-email, .company-label, .feature p, .card p, .panel p { color: var(--holo-muted); }
+.brand-icon, .card-logo, .feature-icon, .module-icon, .settings-card-icon, .office-room-chat-icon {
+  filter: drop-shadow(0 0 14px rgba(85, 231, 255, .32));
+}
+.nav-button { color: #a9c1de !important; transition: background .22s ease, border-color .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease !important; }
+.nav-button:hover, .nav-button.active { color: #eafcff !important; background: linear-gradient(90deg, rgba(24,177,231,.14), rgba(87,99,255,.10)) !important; }
+.nav-button:hover { transform: translateX(-3px); box-shadow: inset -2px 0 0 var(--holo-cyan), 0 0 20px rgba(50,140,255,.08); }
+.nav-button.active { box-shadow: inset -2px 0 0 var(--holo-cyan), 0 0 24px rgba(50,140,255,.11); }
+button, .primary-button, .secondary-button, .logout-button, .back-button, .project-tasks-button,
+.profile-save-button, #submitButton, .office-room-action, .office-locker-upload-button, .google-signin-button {
+  border-radius: 10px;
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease, border-color .2s ease !important;
+}
+.primary-button, #submitButton, .profile-save-button, .office-room-action {
+  color: #03101c !important; border: 1px solid rgba(126,250,255,.8) !important;
+  background: linear-gradient(105deg, #65f4ff, #79bfff 52%, #b4a0ff) !important;
+  box-shadow: 0 0 22px rgba(62,205,255,.18), inset 0 1px 0 rgba(255,255,255,.55);
+  font-weight: 750;
+}
+.secondary-button, .logout-button, .back-button, .project-tasks-button, .google-signin-button, .office-locker-upload-button {
+  color: #dff9ff !important; background: rgba(15,35,62,.8) !important; border: 1px solid rgba(95,224,255,.25) !important;
+}
+button:hover:not(:disabled), .primary-button:hover:not(:disabled), .secondary-button:hover:not(:disabled),
+.logout-button:hover:not(:disabled), .back-button:hover:not(:disabled), .project-tasks-button:hover:not(:disabled),
+.profile-save-button:hover:not(:disabled), #submitButton:hover:not(:disabled), .google-signin-button:hover:not(:disabled) {
+  filter: brightness(1.1) saturate(1.08); box-shadow: 0 0 28px rgba(65, 210, 255, .23); transform: translateY(-1px);
+}
+button:active:not(:disabled) { transform: scale(.985); }
+input, textarea, select {
+  color: #e8f7ff !important; background: rgba(3, 12, 28, .78) !important;
+  border-color: rgba(102, 186, 235, .3) !important;
+  transition: border-color .22s ease, box-shadow .22s ease, background-color .22s ease !important;
+}
+input::placeholder, textarea::placeholder { color: #7089a8 !important; }
+input:focus, textarea:focus, select:focus { border-color: rgba(95,244,255,.75) !important; box-shadow: 0 0 0 3px rgba(85, 231, 255, .09), 0 0 20px rgba(85, 231, 255, .1) !important; }
+option { color: #e8f7ff; background: #071329; }
+.message, .hero-badge, .security-note { border-color: rgba(95,224,255,.18); }
+.hero-badge { background: rgba(16,43,72,.64); color: #b9f7ff; box-shadow: 0 0 24px rgba(84,133,255,.1); }
+.status-dot { animation: holo-status-pulse 2.6s ease-in-out infinite; }
+/* Corner targeting marks make the interface feel like a live control deck. */
+body.holo-ready .main-container::before, body.holo-ready .container::before, body.holo-ready .layout::before {
+  content: ""; position: fixed; inset: 14px; z-index: 6; pointer-events: none; opacity: .32;
+  background: linear-gradient(var(--holo-cyan),var(--holo-cyan)) left top/26px 1px no-repeat,
+              linear-gradient(var(--holo-cyan),var(--holo-cyan)) left top/1px 26px no-repeat,
+              linear-gradient(var(--holo-cyan),var(--holo-cyan)) right top/26px 1px no-repeat,
+              linear-gradient(var(--holo-cyan),var(--holo-cyan)) right top/1px 26px no-repeat,
+              linear-gradient(var(--holo-cyan),var(--holo-cyan)) left bottom/26px 1px no-repeat,
+              linear-gradient(var(--holo-cyan),var(--holo-cyan)) left bottom/1px 26px no-repeat,
+              linear-gradient(var(--holo-cyan),var(--holo-cyan)) right bottom/26px 1px no-repeat,
+              linear-gradient(var(--holo-cyan),var(--holo-cyan)) right bottom/1px 26px no-repeat;
+}
+/* Entrance reveals: content remains visible if JavaScript is unavailable. */
+.holo-reveal { animation: holo-rise-in .72s cubic-bezier(.2,.75,.25,1) both; }
+.holo-reveal-delay-1 { animation-delay: .08s; }
+.holo-reveal-delay-2 { animation-delay: .16s; }
+.holo-reveal-delay-3 { animation-delay: .24s; }
+.holo-pointer-light { position: fixed; z-index: 7; width: 390px; height: 390px; border-radius: 50%; pointer-events: none; opacity: 0; transform: translate(-50%,-50%); background: radial-gradient(circle, rgba(61,201,255,.14), rgba(84,133,255,.05) 38%, transparent 70%); transition: opacity .25s ease; mix-blend-mode: screen; }
+body.holo-pointer-active .holo-pointer-light { opacity: 1; }
+@keyframes holo-grid-drift { from { background-position: 0 0, 0 0; } to { background-position: 44px 44px, 44px 44px; } }
+@keyframes holo-status-pulse { 0%,100% { box-shadow: 0 0 7px rgba(72,214,160,.25); } 50% { box-shadow: 0 0 15px rgba(72,214,160,.7); } }
+@keyframes holo-rise-in { from { opacity: 0; transform: translateY(13px) scale(.99); filter: blur(3px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+@media (max-width: 640px) { body.holo-ready .main-container::before, body.holo-ready .container::before, body.holo-ready .layout::before { inset: 5px; opacity: .18; } }
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none !important; }
+  .holo-pointer-light { display: none !important; }
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
